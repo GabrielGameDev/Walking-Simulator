@@ -12074,6 +12074,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2e8bd91139925f469d46c40845ae442, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 73f93595a5b89344ea2c2213b74ae69b, type: 2}
 --- !u!65 &1528406612
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13826,6 +13827,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2e8bd91139925f469d46c40845ae442, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: b34d0c7727e9f724fa2d74c99ad0145b, type: 2}
 --- !u!65 &1747620495
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15157,6 +15159,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rayDistance: 2
+  rotateSpeed: 200
+  objectViewer: {fileID: 668310937}
+  OnView:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1904807863}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!20 &1899657335
 Camera:
   m_ObjectHideFlags: 0
