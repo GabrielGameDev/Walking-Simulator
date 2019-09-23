@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Portrait
   m_EditorClassIdentifier: 
   grabbable: 1
-  audioClip: {fileID: 0}
-  text: 
+  audioClip: {fileID: 8300000, guid: 959d29a9f5ac8ee4a9fb5ce162047c1b, type: 3}
+  text: "Ana \xE9 casada com um empres\xE1rio local e tem um filho pequeno."

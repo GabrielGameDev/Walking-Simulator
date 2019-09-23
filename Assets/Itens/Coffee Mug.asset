@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Coffee Mug
   m_EditorClassIdentifier: 
   grabbable: 1
-  audioClip: {fileID: 0}
-  text: 
+  audioClip: {fileID: 8300000, guid: 5f951470de7d3e5408b6990361033a70, type: 3}
+  text: "O caf\xE9 ainda est\xE1 morno. Ana veio ao trabalho hoje. Por\xE9m logo que
+    chegou saiu."

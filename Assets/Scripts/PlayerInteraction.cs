@@ -11,17 +11,26 @@ public class PlayerInteraction : MonoBehaviour
 	public Transform objectViewer;
 
 	public UnityEvent OnView;
+	public UnityEvent OnFinishView;
 
 	private Camera myCam;
 
 	private bool isViewing;
+	private bool canFinish;
 
 	private Interactables currentInteractable;
 	private Vector3 originPosition;
 	private Quaternion originRotation;
 
-    // Start is called before the first frame update
-    void Start()
+	private AudioPlayer audioPlayer;
+
+	private void Awake()
+	{
+		audioPlayer = GetComponent<AudioPlayer>();
+	}
+
+	// Start is called before the first frame update
+	void Start()
     {
 		myCam = Camera.main;
     }
@@ -42,6 +51,11 @@ public class PlayerInteraction : MonoBehaviour
 				RotateObject();
 			}
 
+			if(canFinish && Input.GetMouseButtonDown(1))
+			{
+				FinishView();
+			}
+
 			return;
 		}
 
@@ -56,11 +70,18 @@ public class PlayerInteraction : MonoBehaviour
 				UIManager.instance.SetHandCursor(true);
 				if (Input.GetMouseButtonDown(0))
 				{
+					if (interactable.isMoving)
+					{
+						return;
+					}
+
 					OnView.Invoke();
 
 					currentInteractable = interactable;
 
 					isViewing = true;
+
+					Interact(currentInteractable.item);
 
 					if (currentInteractable.item.grabbable)
 					{
@@ -82,8 +103,37 @@ public class PlayerInteraction : MonoBehaviour
 
 	}
 
+	void Interact(Item item)
+	{
+		audioPlayer.PlayAudio(item.audioClip);
+		UIManager.instance.SetCaptions(item.text);
+		Invoke("CanFinish", item.audioClip.length + 0.5f);
+	}
+
+	void CanFinish()
+	{
+		canFinish = true;
+		UIManager.instance.SetBackImage(true);
+		UIManager.instance.SetCaptions("");
+	}
+
+	void FinishView()
+	{
+		canFinish = false;
+		isViewing = false;
+		UIManager.instance.SetBackImage(false);
+		if (currentInteractable.item.grabbable)
+		{
+			currentInteractable.transform.rotation = originRotation;
+			StartCoroutine(MovingObject(currentInteractable, originPosition));
+		}
+
+		OnFinishView.Invoke();
+	}
+
 	IEnumerator MovingObject(Interactables obj, Vector3 position)
 	{
+		obj.isMoving = true;
 		float timer = 0;
 		while (timer < 1)
 		{
@@ -93,6 +143,7 @@ public class PlayerInteraction : MonoBehaviour
 		}
 
 		obj.transform.position = position;
+		obj.isMoving = false;
 	}
 
 	void RotateObject()

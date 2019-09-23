@@ -6,6 +6,9 @@ public class Interactables : MonoBehaviour
 {
 	public Item item;
 
+	[HideInInspector]
+	public bool isMoving;
+
     // Start is called before the first frame update
     void Start()
     {
