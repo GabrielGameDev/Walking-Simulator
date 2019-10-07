@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fa6e843c4e4f844587d5410748a7240, type: 3}
+  m_Name: Empregados
+  m_EditorClassIdentifier: 
+  grabbable: 0
+  audioClip: {fileID: 8300000, guid: ad2e4852a3c0fde4a9953e8685732622, type: 3}
+  text: 
+  image: {fileID: 21300000, guid: 8a47413f64e27164da50428fd8e78d90, type: 3}

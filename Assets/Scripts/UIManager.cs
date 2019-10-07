@@ -13,6 +13,8 @@ public class UIManager : MonoBehaviour
 	public GameObject handCursor;
 	public GameObject backImage;
 
+	public Image interactionImage;
+
 	private void Awake()
 	{
 		instance = this;
@@ -43,5 +45,16 @@ public class UIManager : MonoBehaviour
 	public void SetBackImage(bool state)
 	{
 		backImage.SetActive(state);
+
+		if (!state)
+		{
+			interactionImage.enabled = false;
+		}
+	}
+
+	public void SetImage(Sprite sprite)
+	{
+		interactionImage.sprite = sprite;
+		interactionImage.enabled = true;
 	}
 }

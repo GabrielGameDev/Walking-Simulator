@@ -105,6 +105,10 @@ public class PlayerInteraction : MonoBehaviour
 
 	void Interact(Item item)
 	{
+		if(item.image != null)
+		{
+			UIManager.instance.SetImage(item.image);
+		}
 		audioPlayer.PlayAudio(item.audioClip);
 		UIManager.instance.SetCaptions(item.text);
 		Invoke("CanFinish", item.audioClip.length + 0.5f);
