@@ -74,21 +74,29 @@ public class PlayerInteraction : MonoBehaviour
 					{
 						return;
 					}
-
-					OnView.Invoke();
+					
 
 					currentInteractable = interactable;
 
-					isViewing = true;
+					currentInteractable.OnInteract.Invoke();
 
-					Interact(currentInteractable.item);
-
-					if (currentInteractable.item.grabbable)
+					if(currentInteractable.item != null)
 					{
-						originPosition = currentInteractable.transform.position;
-						originRotation = currentInteractable.transform.rotation;
-						StartCoroutine(MovingObject(currentInteractable, objectViewer.position));
+						OnView.Invoke();
+
+						isViewing = true;
+
+						Interact(currentInteractable.item);
+
+						if (currentInteractable.item.grabbable)
+						{
+							originPosition = currentInteractable.transform.position;
+							originRotation = currentInteractable.transform.rotation;
+							StartCoroutine(MovingObject(currentInteractable, objectViewer.position));
+						}
 					}
+
+					
 				}
 			}
 			else
@@ -117,7 +125,16 @@ public class PlayerInteraction : MonoBehaviour
 	void CanFinish()
 	{
 		canFinish = true;
-		UIManager.instance.SetBackImage(true);
+
+		if(currentInteractable.item.image == null && !currentInteractable.item.grabbable)
+		{
+			FinishView();
+		}
+		else
+		{
+			UIManager.instance.SetBackImage(true);
+		}
+		
 		UIManager.instance.SetCaptions("");
 	}
 
