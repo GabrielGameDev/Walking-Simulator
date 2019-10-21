@@ -8,6 +8,8 @@ public class PlayerInteraction : MonoBehaviour
 	public float rayDistance = 2f;
 	public float rotateSpeed = 200;
 
+	public AudioClip writingSound;
+
 	public Transform objectViewer;
 
 	public UnityEvent OnView;
@@ -23,10 +25,12 @@ public class PlayerInteraction : MonoBehaviour
 	private Quaternion originRotation;
 
 	private AudioPlayer audioPlayer;
+	private PlayerInventory inventory;
 
 	private void Awake()
 	{
 		audioPlayer = GetComponent<AudioPlayer>();
+		inventory = GetComponent<PlayerInventory>();
 	}
 
 	// Start is called before the first frame update
@@ -143,6 +147,13 @@ public class PlayerInteraction : MonoBehaviour
 		canFinish = false;
 		isViewing = false;
 		UIManager.instance.SetBackImage(false);
+
+		if (currentInteractable.item.inventoryItem)
+		{
+			inventory.AddItem(currentInteractable.item);
+			audioPlayer.PlayAudio(writingSound);
+			currentInteractable.CollectItem.Invoke();
+		}
 		if (currentInteractable.item.grabbable)
 		{
 			currentInteractable.transform.rotation = originRotation;

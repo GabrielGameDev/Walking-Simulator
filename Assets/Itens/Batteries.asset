@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fa6e843c4e4f844587d5410748a7240, type: 3}
+  m_Name: Batteries
+  m_EditorClassIdentifier: 
+  grabbable: 1
+  audioClip: {fileID: 8300000, guid: c951a9293c3ddad44a6da56ae0e0364b, type: 3}
+  text: Posso ligar alguma coisa com essas pilhas
+  image: {fileID: 0}
+  inventoryItem: 1
+  collectMessage: Coletou pilhas

@@ -10,4 +10,8 @@ public class Item : ScriptableObject
 	public AudioClip audioClip;
 	public string text;
 	public Sprite image;
+
+	[Header("Inventory")]
+	public bool inventoryItem;
+	public string collectMessage;
 }
