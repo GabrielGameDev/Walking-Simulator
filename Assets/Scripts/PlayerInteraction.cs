@@ -21,6 +21,7 @@ public class PlayerInteraction : MonoBehaviour
 	private bool canFinish;
 
 	private Interactables currentInteractable;
+	private Item currentItem;
 	private Vector3 originPosition;
 	private Quaternion originRotation;
 
@@ -90,6 +91,24 @@ public class PlayerInteraction : MonoBehaviour
 
 						isViewing = true;
 
+						bool hasPreviousItem = false;
+
+						for (int i = 0; i < currentInteractable.previousItem.Length; i++)
+						{
+							if (inventory.itens.Contains(currentInteractable.previousItem[i].requiredItem))
+							{
+								Interact(currentInteractable.previousItem[i].interactionItem);
+								currentInteractable.previousItem[i].OnInteract.Invoke();
+								hasPreviousItem = true;
+								break;
+							}
+						}
+
+						if (hasPreviousItem)
+						{
+							return;
+						}
+
 						Interact(currentInteractable.item);
 
 						if (currentInteractable.item.grabbable)
@@ -117,6 +136,8 @@ public class PlayerInteraction : MonoBehaviour
 
 	void Interact(Item item)
 	{
+		currentItem = item;
+
 		if(item.image != null)
 		{
 			UIManager.instance.SetImage(item.image);
@@ -130,7 +151,7 @@ public class PlayerInteraction : MonoBehaviour
 	{
 		canFinish = true;
 
-		if(currentInteractable.item.image == null && !currentInteractable.item.grabbable)
+		if(currentItem.image == null && !currentItem.grabbable)
 		{
 			FinishView();
 		}
@@ -148,13 +169,13 @@ public class PlayerInteraction : MonoBehaviour
 		isViewing = false;
 		UIManager.instance.SetBackImage(false);
 
-		if (currentInteractable.item.inventoryItem)
+		if (currentItem.inventoryItem)
 		{
-			inventory.AddItem(currentInteractable.item);
+			inventory.AddItem(currentItem);
 			audioPlayer.PlayAudio(writingSound);
 			currentInteractable.CollectItem.Invoke();
 		}
-		if (currentInteractable.item.grabbable)
+		if (currentItem.grabbable)
 		{
 			currentInteractable.transform.rotation = originRotation;
 			StartCoroutine(MovingObject(currentInteractable, originPosition));
