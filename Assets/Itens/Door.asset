@@ -10,12 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8fa6e843c4e4f844587d5410748a7240, type: 3}
-  m_Name: Mason PC with password
+  m_Name: Door
   m_EditorClassIdentifier: 
-  requiredItem: 1
   grabbable: 0
-  audioClip: {fileID: 8300000, guid: bc1c2eb9c79679d429508b0f07ac48a7, type: 3}
-  text: 'O chefe armazena a senha de todos os computadores. Senha Ana: HighLevel'
+  audioClip: {fileID: 8300000, guid: 1503cbaef7c64224cb9eeca3dc6097f4, type: 3}
+  text: 
   image: {fileID: 0}
-  inventoryItem: 1
-  collectMessage: Descobriu senha HighLevel
+  inventoryItem: 0
+  collectMessage: 

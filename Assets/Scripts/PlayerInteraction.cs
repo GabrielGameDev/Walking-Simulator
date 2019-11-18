@@ -181,6 +181,11 @@ public class PlayerInteraction : MonoBehaviour
 			StartCoroutine(MovingObject(currentInteractable, originPosition));
 		}
 
+		if (currentItem.requiredItem)
+		{
+			inventory.AddRequiredItens(currentItem);
+		}
+
 		OnFinishView.Invoke();
 	}
 

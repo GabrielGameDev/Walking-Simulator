@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8fa6e843c4e4f844587d5410748a7240, type: 3}
-  m_Name: Mason PC with password
+  m_Name: Radio
   m_EditorClassIdentifier: 
   requiredItem: 1
-  grabbable: 0
-  audioClip: {fileID: 8300000, guid: bc1c2eb9c79679d429508b0f07ac48a7, type: 3}
-  text: 'O chefe armazena a senha de todos os computadores. Senha Ana: HighLevel'
+  grabbable: 1
+  audioClip: {fileID: 8300000, guid: d4f4aaf883b31e04fa9eedf41f97ed7b, type: 3}
+  text: "\u201COs n\xFAmeros sorteados na loteria hoje cedo foram: 4, 8, 15, 16, 23
+    e 42.\u201D"
   image: {fileID: 0}
-  inventoryItem: 1
-  collectMessage: Descobriu senha HighLevel
+  inventoryItem: 0
+  collectMessage: 
